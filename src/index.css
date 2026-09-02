@@ -1,0 +1,205 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* MEDIGUARD X Light Theme */
+    --background: 210 20% 98%;
+    --foreground: 222 47% 11%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+
+    --primary: 196 80% 38%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 222 47% 11%;
+
+    --muted: 210 40% 94%;
+    --muted-foreground: 215 16% 47%;
+
+    --accent: 196 80% 38%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 214 32% 89%;
+    --input: 214 32% 89%;
+    --ring: 196 80% 38%;
+
+    --radius: 0.75rem;
+
+    --sidebar-background: 222 47% 11%;
+    --sidebar-foreground: 210 40% 92%;
+    --sidebar-primary: 196 80% 55%;
+    --sidebar-primary-foreground: 222 47% 11%;
+    --sidebar-accent: 222 40% 18%;
+    --sidebar-accent-foreground: 210 40% 96%;
+    --sidebar-border: 222 40% 18%;
+    --sidebar-ring: 196 80% 55%;
+
+    /* Custom tokens */
+    --brand-teal: 196 80% 38%;
+    --brand-navy: 222 47% 11%;
+    --brand-cyan: 188 85% 45%;
+    --status-success: 142 71% 35%;
+    --status-warning: 38 92% 50%;
+    --status-error: 0 72% 51%;
+    --status-info: 196 80% 38%;
+    --glass-bg: 0 0% 100%;
+    --glass-border: 214 32% 89%;
+  }
+
+  .dark {
+    --background: 222 47% 7%;
+    --foreground: 210 40% 95%;
+
+    --card: 222 47% 10%;
+    --card-foreground: 210 40% 95%;
+
+    --popover: 222 47% 10%;
+    --popover-foreground: 210 40% 95%;
+
+    --primary: 196 80% 55%;
+    --primary-foreground: 222 47% 7%;
+
+    --secondary: 222 40% 16%;
+    --secondary-foreground: 210 40% 95%;
+
+    --muted: 222 40% 14%;
+    --muted-foreground: 215 20% 60%;
+
+    --accent: 196 80% 55%;
+    --accent-foreground: 222 47% 7%;
+
+    --destructive: 0 62% 40%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 222 40% 18%;
+    --input: 222 40% 18%;
+    --ring: 196 80% 55%;
+
+    --sidebar-background: 222 47% 5%;
+    --sidebar-foreground: 210 40% 90%;
+    --sidebar-primary: 196 80% 55%;
+    --sidebar-primary-foreground: 222 47% 5%;
+    --sidebar-accent: 222 40% 12%;
+    --sidebar-accent-foreground: 210 40% 90%;
+    --sidebar-border: 222 40% 14%;
+    --sidebar-ring: 196 80% 55%;
+
+    --glass-bg: 222 47% 10%;
+    --glass-border: 222 40% 18%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+  }
+}
+
+@layer components {
+  .sidebar-item {
+    @apply flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-all duration-150 cursor-pointer;
+    color: hsl(var(--sidebar-foreground));
+  }
+  .sidebar-item:hover {
+    background: hsl(var(--sidebar-accent));
+    color: hsl(var(--sidebar-accent-foreground));
+  }
+  .sidebar-item.active {
+    background: hsl(var(--sidebar-primary) / 0.15);
+    color: hsl(var(--sidebar-primary));
+    border-left: 2px solid hsl(var(--sidebar-primary));
+  }
+  .sidebar-item.active svg {
+    color: hsl(var(--sidebar-primary));
+  }
+
+  .mgx-card {
+    @apply bg-card border border-border rounded-xl p-5 shadow-sm;
+  }
+
+  .mgx-badge {
+    @apply inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-semibold;
+  }
+  .mgx-badge-success {
+    @apply mgx-badge bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400;
+  }
+  .mgx-badge-warning {
+    @apply mgx-badge bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400;
+  }
+  .mgx-badge-error {
+    @apply mgx-badge bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400;
+  }
+  .mgx-badge-info {
+    @apply mgx-badge bg-cyan-100 text-cyan-700 dark:bg-cyan-900/30 dark:text-cyan-400;
+  }
+  .mgx-badge-neutral {
+    @apply mgx-badge bg-secondary text-secondary-foreground;
+  }
+
+  .mgx-btn-primary {
+    @apply inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-primary text-primary-foreground font-semibold text-sm transition-all duration-150 hover:opacity-90 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+  .mgx-btn-secondary {
+    @apply inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-secondary text-secondary-foreground border border-border font-semibold text-sm transition-all duration-150 hover:bg-accent hover:text-accent-foreground active:scale-95 disabled:opacity-50;
+  }
+  .mgx-btn-danger {
+    @apply inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-destructive text-destructive-foreground font-semibold text-sm transition-all duration-150 hover:opacity-90 active:scale-95 disabled:opacity-50;
+  }
+  .mgx-btn-ghost {
+    @apply inline-flex items-center gap-2 px-3 py-2 rounded-lg text-muted-foreground font-medium text-sm transition-all duration-150 hover:bg-muted hover:text-foreground active:scale-95;
+  }
+
+  .stat-card {
+    @apply mgx-card flex flex-col gap-2;
+  }
+
+  .firewall-step {
+    @apply flex items-center gap-2 px-3 py-2 rounded-lg text-xs font-semibold border;
+  }
+  .firewall-step-pass {
+    @apply firewall-step bg-green-50 border-green-200 text-green-700 dark:bg-green-900/20 dark:border-green-800 dark:text-green-400;
+  }
+  .firewall-step-fail {
+    @apply firewall-step bg-red-50 border-red-200 text-red-700 dark:bg-red-900/20 dark:border-red-800 dark:text-red-400;
+  }
+  .firewall-step-pending {
+    @apply firewall-step bg-muted border-border text-muted-foreground;
+  }
+
+  .scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: hsl(var(--border)) transparent;
+  }
+  .scrollbar-thin::-webkit-scrollbar { width: 4px; }
+  .scrollbar-thin::-webkit-scrollbar-track { background: transparent; }
+  .scrollbar-thin::-webkit-scrollbar-thumb { background: hsl(var(--border)); border-radius: 2px; }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
